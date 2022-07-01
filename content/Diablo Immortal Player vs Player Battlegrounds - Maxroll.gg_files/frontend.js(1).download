@@ -1,0 +1,5 @@
+const embedYoutube=(embed,youtubeId)=>{embed.html(`
+	<iframe id="player" type="text/html" width="400" height="300"
+src="https://www.youtube.com/embed/${ youtubeId }?enablejsapi=1"
+frameborder="0"></iframe>`);embed.show();};jQuery(function($){$('.selector').each(function(idx){const wrapper=$(this);const id=wrapper.attr('data-selector-id');const youtubeId=wrapper.attr('data-youtube-id');const src=wrapper.attr('data-video-src');const embed=$('.video-display .youtube-embed');const videoEl=$('.video-display video');const hasYoutube=youtubeId&&youtubeId!=='';if(idx===0&&hasYoutube){embedYoutube(embed,youtubeId);videoEl.hide();}
+wrapper.click(function(){$('.selector').removeClass('active');wrapper.addClass('active');$('.selector-text').removeClass('active');$(`.selector-text[data-selector-id=${ id }]`).addClass('active');if(hasYoutube){embedYoutube(embed,youtubeId);videoEl.hide();}else{embed.hide();$('.video-display video source').attr('src',src);$('.video-display video')[0].load();videoEl.show();}});});});

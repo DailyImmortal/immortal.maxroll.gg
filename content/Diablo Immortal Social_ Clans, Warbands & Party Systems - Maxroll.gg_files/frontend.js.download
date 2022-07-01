@@ -1,0 +1,2 @@
+jQuery(function($){$('.show-more > button').click(function(){const button=$(this);if(button.hasClass('more')){button.parent().siblings('.item-container').each(function(idx){const container=$(this);if(idx>=2){container.addClass('hidden');}});button.removeClass('more');button.html('Show more');button.parent().parent().removeClass('show-more');return null;}
+button.html('Show less');button.addClass('more');button.parent().siblings('.hidden').removeClass('hidden');button.parent().parent().addClass('show-more');});});
